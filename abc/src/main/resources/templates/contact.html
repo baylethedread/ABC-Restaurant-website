@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - ABC Restaurant</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px 0;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #f4b41a;
+        }
+        .section {
+            background: #ffffff;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section p, .section form label {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+        .section form {
+            margin-top: 25px;
+        }
+        .section form label {
+            margin-top: 15px;
+        }
+        .section form input, .section form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #34495e;
+            background-color: #ecf0f1;
+            transition: all 0.3s ease;
+        }
+        .section form input:focus, .section form textarea:focus {
+            border-color: #3498db;
+            background-color: #ffffff;
+            outline: none;
+        }
+        .section form button {
+            padding: 15px 30px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .section form button:hover {
+            background-color: #2980b9;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>ABC Restaurant</h1>
+        <br>
+        <ul class="nav-menu">
+            <li><a href="/homepage">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/reservations">Reservations</a></li>
+            <li><a href="/gallery">Gallery</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/logout">Log Out</a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="container">
+    <!-- Contact Us Section -->
+    <div class="section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or would like to make a reservation, feel free to reach out to us. We would love to hear from you!</p>
+
+        <h3>Contact Information</h3>
+        <p><strong>Address:</strong> 123 Main Street, Colombo, Sri Lanka</p>
+        <p><strong>Phone:</strong> +94 11 2345678</p>
+        <p><strong>Email:</strong> contact@abcrestaurant.lk</p>
+
+        <h3>Get in Touch</h3>
+        <form action="/submit-contact-form" method="post">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 ABC Restaurant. All rights reserved.</p>
+</footer>
+</body>
+</html>
