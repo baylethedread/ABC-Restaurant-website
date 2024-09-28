@@ -90,7 +90,60 @@ Here are some key screenshots that showcase the system’s interface and functio
 
 ## Reports
 
-The system also features several reports that add value to the business by providing useful insights:
+The system also features several reports that add value to the business by providing useful insights: the admin has the ability to download a detailed report
+
+# Project Installation Guide
+
+This guide will help you set up and run the project on your local machine for development and testing purposes. The project uses **IntelliJ IDEA** as the IDE, **Java** for backend development, and **XAMPP** for managing the MySQL database.
+
+## Prerequisites
+
+Make sure you have the following tools installed:
+
+1. **Java Development Kit (JDK)** (version 8 or above)
+2. **IntelliJ IDEA** (Ultimate or Community Edition)
+3. **XAMPP** (Apache + MySQL)
+4. **Git** (optional but recommended for version control)
+
+## Step 1: Clone the Repository
+
+## Step 2: Import the Project into IntelliJ IDEA
+
+1. Open **IntelliJ IDEA**.
+2. Go to **File > Open** and select the cloned project folder.
+3. IntelliJ will automatically detect the project structure and import it.
+4. Set the **JDK** if required:
+   - Go to **File > Project Structure > Project**.
+   - Set the **Project SDK** to your installed JDK version.
+
+## Step 3: Set Up XAMPP for MySQL
+
+1. Start **XAMPP** and activate **Apache** and **MySQL**.
+2. Open **phpMyAdmin** at [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
+3. Import the provided `.sql` file:
+   - In **phpMyAdmin**, go to the **Import** tab.
+   - Select the `.sql` file from your project folder and click **Go**.
+5. Update database credentials in the project configuration 
+
+## Step 4: Running the Project
+
+Once the project is set up and the database is configured, you can run the application:
+
+1. **Build the project**:
+   - In IntelliJ, go to the top toolbar and click on the green **Run** button or press `Shift + F10` to build and run the application.
+   
+2. **Access the application**:
+   - Once the application starts successfully, open a web browser.
+   - Navigate to `http://localhost:8080` to access the application.
+
+3. **Verify Database Connection**:
+   - Ensure that your XAMPP server is running with **Apache** and **MySQL**.
+   - Check that the application connects to the database by visiting different parts of the application (e.g., creating a user, making a reservation).
+
+4. **Common Endpoints**:
+   - Admin Dashboard: `http://localhost:8080/admin`
+   - User Registration: `http://localhost:8080/register`
+   - View Reservations: `http://localhost:8080/admin/reservation/api/reservations`
 
 - **Reservation Reports**: Details on upcoming reservations sorted by date and service type.
 - **Customer Interaction Reports**: Tracks customer activity such as the number of reservations made and queries submitted.
