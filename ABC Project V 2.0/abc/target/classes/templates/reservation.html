@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservations - ABC Restaurant</title>
+  <style>
+         body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px 0;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #f4b41a;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        /* Updated form styles */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        .form-group label {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea {
+            width: 98%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #2980b9;
+            outline: none;
+        }
+        .form-group button {
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-group button:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #2980b9;
+            color: white;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            padding: 12px;
+        }
+        td {
+            padding: 12px;
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+        td:first-child, th:first-child {
+            border-radius: 10px 0 0 0;
+        }
+        td:last-child, th:last-child {
+            border-radius: 0 10px 0 0;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>ABC Restaurant</h1>
+    <br>
+    <ul class="nav-menu">
+      <li><a href="/homepage">Home</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/reservations">Reservations</a></li>
+      <li><a href="/gallery">Gallery</a></li>
+      <li><a href="/contact">Contact Us</a></li>
+      <li><a href="/logout">Log Out</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="container">
+  <div class="section">
+    <h2>Make a Reservation</h2>
+    <form id="reservationForm" action="/reservations/add" method="post">
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="members">Number of Members:</label>
+        <input type="number" id="members" name="members" required min="1">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="query">Special Requests/Queries:</label>
+        <textarea id="query" name="query" rows="4"></textarea>
+      </div>
+      <br>
+      <input type="hidden" id="customerName" name="customerName">
+      <div class="form-group">
+        <button type="submit">Submit Reservation</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="section">
+    <h2>Your Reservations</h2>
+    <table id="reservationTable">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Members</th>
+        <th>Query</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- Rows will be populated by JavaScript -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Retrieve username from local storage
+    const username = localStorage.getItem('username');
+
+    // Set the username in the hidden customerName input field
+    document.getElementById('customerName').value = username;
+
+    // Fetch reservations from the REST API
+    fetch('/api/reservations')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector('#reservationTable tbody');
+        tableBody.innerHTML = ''; // Clear existing rows
+
+        data.forEach(reservation => {
+          if (reservation.customerName === username) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${reservation.id}</td>
+              <td>${reservation.customerName}</td>
+              <td>${reservation.date}</td>
+              <td>${reservation.time}</td>
+              <td>${reservation.members}</td>
+              <td>${reservation.query}</td>
+              <td>${reservation.status}</td>
+            `;
+            tableBody.appendChild(row);
+          }
+        });
+      })
+      .catch(error => console.error('Error fetching reservations:', error));
+  });
+</script>
+
+</body>
+</html>
